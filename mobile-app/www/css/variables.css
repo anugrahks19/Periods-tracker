@@ -1,0 +1,192 @@
+/* ============================================
+   BLOOM — Design Tokens
+   ============================================ */
+
+:root {
+  /* ── Typography ──────────────────────── */
+  --font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+  --font-xs: 0.6875rem;    /* 11px */
+  --font-sm: 0.8125rem;    /* 13px */
+  --font-base: 0.9375rem;  /* 15px */
+  --font-md: 1.0625rem;    /* 17px */
+  --font-lg: 1.25rem;      /* 20px */
+  --font-xl: 1.5rem;       /* 24px */
+  --font-2xl: 1.875rem;    /* 30px */
+  --font-3xl: 2.25rem;     /* 36px */
+
+  /* ── Spacing ─────────────────────────── */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* ── Radius ──────────────────────────── */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+
+  /* ── Shadows ─────────────────────────── */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.25);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.35);
+  --shadow-glow: 0 0 20px rgba(232, 100, 122, 0.15);
+
+  /* ── Transitions ─────────────────────── */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+
+  /* ── Layout ──────────────────────────── */
+  --topbar-height: 60px;
+  --bottomnav-height: 72px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+  --content-max-width: 600px;
+}
+
+/* ── Dark Theme (default) ──────────────── */
+[data-theme="dark"] {
+  --bg-primary: #0B0B14;
+  --bg-secondary: #12121F;
+  --bg-surface: #1A1A2E;
+  --bg-surface-hover: #222238;
+  --bg-surface-elevated: #252540;
+  --bg-glass: rgba(26, 26, 46, 0.7);
+  --bg-glass-strong: rgba(26, 26, 46, 0.9);
+
+  --text-primary: #F5F0FF;
+  --text-secondary: #A8A3B8;
+  --text-tertiary: #6B6580;
+  --text-inverse: #0B0B14;
+
+  --border-subtle: rgba(255,255,255,0.06);
+  --border-default: rgba(255,255,255,0.1);
+  --border-strong: rgba(255,255,255,0.18);
+
+  --color-rose: #E8647A;
+  --color-rose-soft: rgba(232,100,122,0.15);
+  --color-rose-hover: #F07A8E;
+  --color-lavender: #A78BFA;
+  --color-lavender-soft: rgba(167,139,250,0.15);
+  --color-mint: #6EE7B7;
+  --color-mint-soft: rgba(110,231,183,0.15);
+  --color-amber: #FBBF24;
+  --color-amber-soft: rgba(251,191,36,0.15);
+  --color-sky: #60A5FA;
+  --color-sky-soft: rgba(96,165,250,0.15);
+  --color-coral: #FB923C;
+  --color-coral-soft: rgba(251,146,60,0.15);
+  --color-red: #F87171;
+  --color-red-soft: rgba(248,113,113,0.15);
+
+  /* Flow intensity gradient */
+  --flow-spotting: #F9A8D4;
+  --flow-light: #F472B6;
+  --flow-moderate: #EC4899;
+  --flow-heavy: #DB2777;
+  --flow-very-heavy: #BE185D;
+
+  /* Mood colors */
+  --mood-happy: #FBBF24;
+  --mood-calm: #6EE7B7;
+  --mood-anxious: #FB923C;
+  --mood-irritable: #F87171;
+  --mood-sad: #60A5FA;
+  --mood-overwhelmed: #C084FC;
+  --mood-loved: #F472B6;
+  --mood-numb: #94A3B8;
+  --mood-excited: #34D399;
+
+  /* Pain scale gradient */
+  --pain-0: #6EE7B7;
+  --pain-3: #FBBF24;
+  --pain-5: #FB923C;
+  --pain-7: #F87171;
+  --pain-10: #DC2626;
+
+  --overlay: rgba(0,0,0,0.6);
+
+  --gradient-primary: linear-gradient(135deg, #E8647A 0%, #A78BFA 100%);
+  --gradient-surface: linear-gradient(135deg, rgba(232,100,122,0.08) 0%, rgba(167,139,250,0.08) 100%);
+  --gradient-glow: radial-gradient(ellipse at 50% 0%, rgba(232,100,122,0.12) 0%, transparent 60%);
+}
+
+/* ── Light Theme ───────────────────────── */
+[data-theme="light"] {
+  --bg-primary: #FFF5F7;
+  --bg-secondary: #FFF0F3;
+  --bg-surface: #FFFFFF;
+  --bg-surface-hover: #FFF0F3;
+  --bg-surface-elevated: #FFFFFF;
+  --bg-glass: rgba(255,255,255,0.8);
+  --bg-glass-strong: rgba(255,255,255,0.95);
+
+  --text-primary: #1A1A2E;
+  --text-secondary: #6B6580;
+  --text-tertiary: #A8A3B8;
+  --text-inverse: #F5F0FF;
+
+  --border-subtle: rgba(0,0,0,0.04);
+  --border-default: rgba(0,0,0,0.08);
+  --border-strong: rgba(0,0,0,0.14);
+
+  --color-rose: #D94E68;
+  --color-rose-soft: rgba(217,78,104,0.1);
+  --color-rose-hover: #C44058;
+  --color-lavender: #8B5CF6;
+  --color-lavender-soft: rgba(139,92,246,0.1);
+  --color-mint: #059669;
+  --color-mint-soft: rgba(5,150,105,0.1);
+  --color-amber: #D97706;
+  --color-amber-soft: rgba(217,119,6,0.1);
+  --color-sky: #2563EB;
+  --color-sky-soft: rgba(37,99,235,0.1);
+  --color-coral: #EA580C;
+  --color-coral-soft: rgba(234,88,12,0.1);
+  --color-red: #DC2626;
+  --color-red-soft: rgba(220,38,38,0.1);
+
+  --flow-spotting: #F9A8D4;
+  --flow-light: #F472B6;
+  --flow-moderate: #EC4899;
+  --flow-heavy: #DB2777;
+  --flow-very-heavy: #BE185D;
+
+  --mood-happy: #D97706;
+  --mood-calm: #059669;
+  --mood-anxious: #EA580C;
+  --mood-irritable: #DC2626;
+  --mood-sad: #2563EB;
+  --mood-overwhelmed: #9333EA;
+  --mood-loved: #DB2777;
+  --mood-numb: #64748B;
+  --mood-excited: #059669;
+
+  --pain-0: #059669;
+  --pain-3: #D97706;
+  --pain-5: #EA580C;
+  --pain-7: #DC2626;
+  --pain-10: #991B1B;
+
+  --overlay: rgba(0,0,0,0.3);
+
+  --gradient-primary: linear-gradient(135deg, #D94E68 0%, #8B5CF6 100%);
+  --gradient-surface: linear-gradient(135deg, rgba(217,78,104,0.06) 0%, rgba(139,92,246,0.06) 100%);
+  --gradient-glow: radial-gradient(ellipse at 50% 0%, rgba(217,78,104,0.08) 0%, transparent 60%);
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.1);
+  --shadow-glow: 0 0 20px rgba(217,78,104,0.1);
+}

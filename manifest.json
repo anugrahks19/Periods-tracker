@@ -1,0 +1,19 @@
+{
+  "name": "Bloom — Period & Wellness Tracker",
+  "short_name": "Bloom",
+  "description": "A private period and wellness tracker for understanding her cycle, mood, pain, and needs.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0B14",
+  "theme_color": "#0B0B14",
+  "orientation": "portrait",
+  "categories": ["health", "lifestyle"],
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='128' fill='%230B0B14'/><text x='256' y='380' font-size='350' text-anchor='middle'>🌸</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

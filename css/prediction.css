@@ -1,0 +1,354 @@
+/* ============================================
+   BLOOM — Prediction Page Styles (v2)
+   Mobile-first, clean, premium
+   ============================================ */
+
+/* Loading */
+.pred-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-16) var(--space-4);
+  color: var(--text-tertiary);
+  font-size: var(--font-sm);
+}
+.pred-spinner {
+  width: 36px; height: 36px;
+  border: 3px solid var(--border-default);
+  border-top-color: var(--color-rose);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Hero countdown ───────────────────────── */
+.pred-hero {
+  position: relative;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  margin-bottom: var(--space-3);
+  padding: var(--space-6) var(--space-5);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  text-align: center;
+}
+.pred-hero__bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 80% 10%, rgba(232,100,122,0.10) 0%, transparent 55%),
+              radial-gradient(ellipse at 10% 90%, rgba(167,139,250,0.07) 0%, transparent 55%);
+  pointer-events: none;
+}
+.pred-hero__content { position: relative; }
+.pred-hero__label {
+  font-size: var(--font-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-tertiary);
+  margin-bottom: var(--space-2);
+}
+.pred-hero__number {
+  font-size: clamp(52px, 16vw, 80px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: var(--space-2);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+}
+.pred-hero__sub {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-1);
+}
+.pred-hero__date {
+  font-size: var(--font-md);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+.pred-hero__window {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: var(--bg-surface-hover);
+  border-radius: var(--radius-full);
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-3);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.pred-hero__confidence {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-size: var(--font-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.pred-hero__conf-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.85); }
+}
+
+/* ── Phase card ──────────────────────────── */
+.pred-phase {
+  margin-bottom: var(--space-3);
+}
+.pred-phase__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+.pred-phase__left { flex: 1; min-width: 0; }
+.pred-phase__emoji { font-size: 28px; margin-bottom: var(--space-1); display: block; }
+.pred-phase__name  { font-size: var(--font-md); font-weight: 700; }
+.pred-phase__sub   { font-size: var(--font-xs); color: var(--text-tertiary); margin-top: 2px; }
+.pred-phase__right { text-align: right; flex-shrink: 0; }
+.pred-phase__days-num  {
+  font-size: var(--font-2xl);
+  font-weight: 800;
+  color: var(--color-rose);
+  line-height: 1;
+}
+.pred-phase__days-label {
+  font-size: var(--font-xs);
+  color: var(--text-tertiary);
+  margin-top: 2px;
+}
+.pred-progress {
+  height: 8px;
+  background: var(--bg-surface-elevated);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: var(--space-1);
+}
+.pred-progress__bar {
+  height: 100%;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+  transition: width 1.2s var(--ease-out);
+  min-width: 4px;
+}
+.pred-progress__labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-xs);
+  color: var(--text-tertiary);
+  margin-bottom: var(--space-3);
+}
+.pred-phase__tip {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  background: var(--bg-surface-hover);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  line-height: 1.6;
+  border-left: 3px solid var(--color-rose);
+}
+
+/* ── Stats row ───────────────────────────── */
+.pred-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+.pred-stat {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-2);
+  text-align: center;
+}
+.pred-stat__value {
+  font-size: var(--font-sm);
+  font-weight: 700;
+  color: var(--color-rose);
+  margin-bottom: 3px;
+  white-space: nowrap;
+}
+.pred-stat__label {
+  font-size: 10px;
+  color: var(--text-tertiary);
+  line-height: 1.2;
+}
+
+/* ── Cards shared ────────────────────────── */
+.pred-section-title {
+  font-size: var(--font-sm);
+  font-weight: 600;
+  margin-bottom: var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+/* ── Fertile window ──────────────────────── */
+.pred-fertile-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+.pred-fertile-item {
+  background: var(--bg-surface-hover);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3);
+  text-align: center;
+  border: 1px solid var(--border-subtle);
+}
+.pred-fertile-item--active {
+  background: rgba(110,231,183,0.08);
+  border-color: var(--color-mint);
+}
+.pred-fertile-label { font-size: var(--font-xs); color: var(--text-tertiary); margin-bottom: 4px; }
+.pred-fertile-date  { font-size: var(--font-sm); font-weight: 700; margin-bottom: 2px; }
+.pred-fertile-sub   { font-size: var(--font-xs); color: var(--text-tertiary); }
+.pred-fertile-note  {
+  font-size: var(--font-xs);
+  color: var(--text-tertiary);
+  text-align: center;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* ── PMS ──────────────────────────────────── */
+.pred-pms--active {
+  border-color: rgba(251,191,36,0.4);
+  background: rgba(251,191,36,0.03);
+}
+.pred-pms-symptoms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+.pred-pms-tag {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  background: rgba(251,191,36,0.12);
+  border-radius: var(--radius-full);
+  font-size: var(--font-xs);
+  color: var(--color-amber);
+  font-weight: 500;
+}
+.pred-pms-tag__count {
+  font-weight: 700;
+  opacity: 0.7;
+  font-size: 10px;
+}
+.pred-pms-pain {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+}
+.pred-badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+.pred-badge--warn { background: rgba(251,191,36,0.15); color: var(--color-amber); }
+
+/* ── Phase fingerprint ────────────────────── */
+.pred-fingerprint {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+.pred-finger-phase { /* one phase block */ }
+.pred-finger-header {
+  font-size: var(--font-xs);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+  color: var(--text-secondary);
+}
+.pred-finger-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+.pred-finger-tag {
+  font-size: 10px;
+  padding: 2px 7px;
+  background: var(--bg-surface-hover);
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+}
+.pred-finger-moods { font-size: 16px; letter-spacing: 2px; }
+
+/* ── Insight cards ───────────────────────── */
+.insight-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4);
+  margin-bottom: var(--space-3);
+}
+.insight-card__icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.insight-card__text {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.insight-card__text strong { color: var(--text-primary); }
+
+/* ── Cycle history mini-chart ─────────────── */
+.pred-history {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 48px;
+  margin-bottom: var(--space-3);
+}
+.pred-history__bar {
+  flex: 1;
+  border-radius: 4px 4px 0 0;
+  background: var(--color-rose-soft);
+  min-width: 5px;
+  transition: height 0.5s var(--ease-out), background var(--duration-fast);
+}
+.pred-history__bar--current { background: var(--color-rose); }
+.pred-history__bar:hover { background: var(--color-rose); cursor: default; }
+
+/* ── Mobile ───────────────────────────────── */
+@media (max-width: 480px) {
+  .pred-hero { padding: var(--space-5) var(--space-4); }
+  .pred-hero__number { font-size: clamp(44px, 18vw, 64px); }
+  .pred-stats { grid-template-columns: repeat(2, 1fr); }
+  .pred-fingerprint { grid-template-columns: 1fr; }
+  .pred-fertile-row { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 360px) {
+  .pred-stats { grid-template-columns: repeat(2, 1fr); }
+  .pred-stat__value { font-size: var(--font-xs); }
+}

@@ -1,0 +1,20 @@
+{
+  "appId": "com.bloom.tracker",
+  "appName": "Bloom",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000,
+      "backgroundColor": "#0B0B14",
+      "showSpinner": false
+    },
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#0B0B14"
+    },
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_bloom",
+      "iconColor": "#E8647A"
+    }
+  }
+}

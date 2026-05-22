@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <script>
+    // Apply saved theme BEFORE paint to avoid flash
+    (function(){
+      var t = localStorage.getItem('bloom-theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="A private, beautiful period and wellness tracker for understanding her cycle, mood, pain, and needs." />
+  <meta name="theme-color" content="#0F0F1A" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Bloom — Period & Wellness Tracker</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+  <link rel="stylesheet" href="css/prediction.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <!-- Auth Screen (Login/Signup) -->
+  <div id="auth-screen" class="auth-screen">
+    <div class="auth-screen__bg">
+      <div class="auth-screen__orb auth-screen__orb--1"></div>
+      <div class="auth-screen__orb auth-screen__orb--2"></div>
+      <div class="auth-screen__orb auth-screen__orb--3"></div>
+    </div>
+    <!-- Theme toggle on auth screen -->
+    <button id="auth-theme-toggle" class="auth-theme-toggle" aria-label="Toggle theme">
+      <i data-lucide="moon" id="auth-theme-icon"></i>
+    </button>
+    <div class="auth-card">
+      <div class="auth-card__logo">
+        <span class="auth-card__logo-icon">🌸</span>
+        <div class="auth-card__logo-title">Bloom</div>
+        <div class="auth-card__logo-subtitle">Period & Wellness Tracker</div>
+      </div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tab-signup">Sign Up</button>
+        <button class="auth-tab" id="tab-login">Log In</button>
+      </div>
+
+      <!-- Signup Form -->
+      <form id="signup-form" class="auth-form">
+        <div class="auth-input-group">
+          <label class="auth-input-group__label">Your Name</label>
+          <div class="auth-input-group__icon"><i data-lucide="user"></i></div>
+          <input class="auth-input" id="signup-name" type="text" placeholder="What's your name?" required autocomplete="off" />
+        </div>
+        <div class="auth-input-group">
+          <label class="auth-input-group__label">Her Name</label>
+          <div class="auth-input-group__icon"><i data-lucide="heart"></i></div>
+          <input class="auth-input" id="signup-her-name" type="text" placeholder="What's her name?" required autocomplete="off" />
+        </div>
+        <div class="auth-input-group">
+          <label class="auth-input-group__label">Create a PIN</label>
+          <div class="auth-input-group__icon"><i data-lucide="lock"></i></div>
+          <input class="auth-input auth-input--has-eye" id="signup-pin" type="password" placeholder="4+ characters" minlength="4" required autocomplete="new-password" />
+          <button type="button" class="auth-eye-btn" data-target="signup-pin" aria-label="Show PIN">
+            <i data-lucide="eye"></i>
+          </button>
+        </div>
+        <div class="auth-input-group">
+          <label class="auth-input-group__label">Confirm PIN</label>
+          <div class="auth-input-group__icon"><i data-lucide="shield"></i></div>
+          <input class="auth-input auth-input--has-eye" id="signup-pin-confirm" type="password" placeholder="Re-enter PIN" minlength="4" required autocomplete="new-password" />
+          <button type="button" class="auth-eye-btn" data-target="signup-pin-confirm" aria-label="Show PIN">
+            <i data-lucide="eye"></i>
+          </button>
+        </div>
+        <button type="submit" class="auth-btn" id="btn-signup">
+          🌸 Create Account
+        </button>
+      </form>
+
+      <!-- Login Form -->
+      <form id="login-form" class="auth-form" style="display:none">
+        <div class="auth-input-group">
+          <label class="auth-input-group__label">Your Name</label>
+          <div class="auth-input-group__icon"><i data-lucide="user"></i></div>
+          <input class="auth-input" id="login-name" type="text" placeholder="Your name" required autocomplete="off" />
+          <div class="auth-accounts-hint" id="accounts-hint" style="display:none"></div>
+        </div>
+        <div class="auth-input-group">
+          <label class="auth-input-group__label">PIN</label>
+          <div class="auth-input-group__icon"><i data-lucide="lock"></i></div>
+          <input class="auth-input auth-input--has-eye" id="login-pin" type="password" placeholder="Your PIN" required autocomplete="current-password" />
+          <button type="button" class="auth-eye-btn" data-target="login-pin" aria-label="Show PIN">
+            <i data-lucide="eye"></i>
+          </button>
+        </div>
+        <button type="submit" class="auth-btn" id="btn-login">
+          ✨ Log In
+        </button>
+      </form>
+
+      <div class="auth-privacy">
+        <i data-lucide="shield-check"></i>
+        All data stays on your device — 100% private
+      </div>
+
+      <div class="auth-features">
+        <span class="auth-feature">📅 Cycle Tracking</span>
+        <span class="auth-feature">😊 Mood Analysis</span>
+        <span class="auth-feature">🔥 Pain Insights</span>
+        <span class="auth-feature">💕 Partner Mode</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- App Shell (hidden until auth) -->
+  <div id="app" class="app" style="display:none">
+    <!-- Top Bar -->
+    <header id="topbar" class="topbar">
+      <div class="topbar__left">
+        <button id="back-btn" class="topbar__btn topbar__btn--back hidden" aria-label="Go back">
+          <i data-lucide="arrow-left"></i>
+        </button>
+        <div class="topbar__brand">
+          <span class="topbar__logo">🌸</span>
+          <span class="topbar__title">Bloom</span>
+        </div>
+      </div>
+      <div class="topbar__right">
+        <button id="theme-toggle" class="topbar__btn" aria-label="Toggle theme">
+          <i data-lucide="moon"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Page Container -->
+    <main id="page-container" class="page-container">
+      <section id="page-home" class="page" data-page="home"></section>
+      <section id="page-calendar" class="page" data-page="calendar"></section>
+      <section id="page-cycles" class="page" data-page="cycles"></section>
+      <section id="page-analytics" class="page" data-page="analytics"></section>
+      <section id="page-prediction" class="page" data-page="prediction"></section>
+      <section id="page-day" class="page" data-page="day"></section>
+      <section id="page-settings" class="page" data-page="settings"></section>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav id="bottom-nav" class="bottom-nav">
+      <a href="#home" class="bottom-nav__item active" data-nav="home" id="nav-home">
+        <i data-lucide="home"></i><span>Home</span>
+      </a>
+      <a href="#calendar" class="bottom-nav__item" data-nav="calendar" id="nav-calendar">
+        <i data-lucide="calendar-days"></i><span>Calendar</span>
+      </a>
+      <a href="#prediction" class="bottom-nav__item" data-nav="prediction" id="nav-prediction">
+        <i data-lucide="moon-star"></i><span>Predict</span>
+      </a>
+      <a href="#analytics" class="bottom-nav__item" data-nav="analytics" id="nav-analytics">
+        <i data-lucide="bar-chart-3"></i><span>Insights</span>
+      </a>
+      <a href="#settings" class="bottom-nav__item" data-nav="settings" id="nav-settings">
+        <i data-lucide="settings"></i><span>Settings</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- PIN Lock Overlay -->
+  <div id="pin-lock" class="pin-lock hidden">
+    <div class="pin-lock__inner">
+      <span class="pin-lock__logo">🔒</span>
+      <div class="pin-lock__title">Enter PIN to unlock</div>
+      <div class="pin-lock__dots" id="pin-dots">
+        <div class="pin-dot" id="dot-0"></div>
+        <div class="pin-dot" id="dot-1"></div>
+        <div class="pin-dot" id="dot-2"></div>
+        <div class="pin-dot" id="dot-3"></div>
+      </div>
+      <div class="pin-lock__pad" id="pin-pad">
+        <button class="pin-key" data-key="1">1</button>
+        <button class="pin-key" data-key="2">2</button>
+        <button class="pin-key" data-key="3">3</button>
+        <button class="pin-key" data-key="4">4</button>
+        <button class="pin-key" data-key="5">5</button>
+        <button class="pin-key" data-key="6">6</button>
+        <button class="pin-key" data-key="7">7</button>
+        <button class="pin-key" data-key="8">8</button>
+        <button class="pin-key" data-key="9">9</button>
+        <button class="pin-key pin-key--empty" disabled></button>
+        <button class="pin-key" data-key="0">0</button>
+        <button class="pin-key pin-key--delete" data-key="del">⌫</button>
+      </div>
+      <div id="pin-error" style="color:var(--color-red);font-size:var(--font-sm);margin-top:var(--space-4);min-height:20px"></div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Modal Overlay -->
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div id="modal-content" class="modal-content"></div>
+  </div>
+
+  <!-- Scripts (order matters) -->
+  <script src="js/auth.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/predictor.js"></script>
+  <script src="js/pages/home.js"></script>
+  <script src="js/pages/calendar.js"></script>
+  <script src="js/pages/cycles.js"></script>
+  <script src="js/pages/analytics.js"></script>
+  <script src="js/pages/prediction.js"></script>
+  <script src="js/pages/day.js"></script>
+  <script src="js/pages/settings.js"></script>
+  <script src="js/notify.js"></script>
+  <script src="js/seed.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // Register Service Worker for PWA
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    }
+  </script>
+</body>
+</html>
